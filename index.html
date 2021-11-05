@@ -63,7 +63,11 @@ function startgame(){
 	document.getElementById("imagedisplay").src = "img/1.png";
 	document.getElementById("wol").innerHTML = ""
 	for(let hiden in palabraj) {
-		gameword+="*";
+		if(palabraj[hiden]===" "){
+			gameword+=" ";
+		} else {
+			gameword+="*";
+		}
 	}
 	document.getElementById("hidenword").innerHTML = gameword;
 	
