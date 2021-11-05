@@ -1,13 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html><head>
-  
-  <script></script>
-  
-  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>parcial 2</title>
-
-  
-</head><body>
+<html>
+	<head>
+ 	 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+ 	 <title>Ahorcado jiji</title>
+	</head>
+<body>
 <h1>Inserte Palabra</h1>
 
 <input id="palabra" name="palabra" onkeyup="EnableDisable()" type="text">
@@ -23,6 +20,9 @@
 <input id="letra" name="letra" onkeyup="EnableDisable1()" disabled="disabled" maxlength="1" type="text">
 <input id="buscar" value="Buscar" onclick="buscarletra()" name="buscarletra" disabled="disabled" type="button">
 <h1 class="wol" id="wol"> </h1>
+
+
+</body>
 
 <script>
 var resultado=0;
@@ -42,7 +42,7 @@ function EnableDisable() {
 }
 function EnableDisable1() {
 	var buscarletra=document.getElementById("buscar");
-	
+
 	if (letra.value.trim() !="") {
 		buscar.disabled=false;
 	} else {
@@ -106,4 +106,4 @@ String.prototype.replaceAt = function(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
 </script>
-</body></html>
+</html>
