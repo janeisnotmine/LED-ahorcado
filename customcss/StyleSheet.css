@@ -1,0 +1,88 @@
+div.container {
+    width: 500px;
+    margin-top: 5px;
+    padding: 5px;
+    background-color:teal;
+    border: 0px ridge teal;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+div.inspal {
+    margin:auto;
+    text-align: center;
+    background-color: teal;
+    width: 500px; 
+    height: auto;
+    padding: 5px;
+    border-left: 5px ridge teal;
+    border-right: 5px ridge teal;
+}
+div.image {
+    margin:auto;
+    width: 500px; 
+    height: 360px;
+    border-left: 5px ridge teal;
+    border-right: 5px ridge teal;
+}
+div.palesc {
+    margin:auto;
+    text-align: center;
+    background-color: dimgray;
+    width: 500px; 
+    height: 50px;
+    border: 5px ridge dimgray;
+    border-left: 5px ridge teal;
+    border-right: 5px ridge teal;
+}
+
+div.inslet {
+    margin: auto;
+    text-align: center;
+    background-color: teal;
+    width: 500px; 
+    height: auto;
+    padding: 5px;
+    border-left: 7px solid teal;
+    border-right: 7px solid teal;
+}
+div.bletra {
+    margin:auto;
+    text-align: center;
+    background-color: teal;
+    width: 500px; 
+    height: auto;
+    padding: 5px;
+    border-left: 5px ridge teal;
+    border-right: 5px ridge teal;
+}
+div.result {
+    margin: auto;
+    text-align:center;
+    background-color: teal;
+    width: 500px;
+    height: 55px;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+img {
+    max-width: 480px;
+    max-height: 360px;
+}
+h1.header {
+    color:white;
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h1.wol {
+    color: white;
+    text-shadow: 2px;
+    font-size: 32px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+p {
+    font: 24px bold;
+    color: white;
+    font-style: oblique;
+}
