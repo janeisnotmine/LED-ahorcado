@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<!-- nada que ver aca -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="customcss/stylesheet.css" />
+		<title>Ahorcado jiji</title>
+	</head>
+<body>
+	<div>
+		<div class="container">
+			<div class="header">
+				<h1 class="header">Juego del Ahorcado</h1>
+			</div>
+		</div>
+		<div class="inspal">
+			<div class="input-group">
+				<input class="form-control" id="palabra" name="palabra" onkeyup="EnableDisablesg()" maxlength="20" type="text" placeholder="Escribí la palabra o frase acá">
+				<button class="btn btn-primary" id="startgameb" onclick="startgame()" name="startgame" disabled="disabled">Iniciar</button>
+				<button class="btn btn-dark" id="palrandom" onclick="randomword()" name="palrandom">Random</button>
+			</div>
+		</div>
+		<div class="image">
+			<img alt="ahorcado" id="imagedisplay" src="img/1.png">
+		</div>
+		<div class="palesc" id="palesc">
+			<h2 class="hw" id="hidenword"> </h2>
+		</div>
+		<div class="bletra">
+			<div class="input-group">
+				<input class="form-control" id="letra" name="letra" onkeyup="EnableDisableb()" disabled="disabled" maxlength="1" type="text" placeholder="Escribí la letra acá">
+				<button class="btn btn-primary" id="buscar" onclick="buscarletra()" name="buscarletra" disabled="disabled">Buscar</button>
+			</div>
+		</div>
+		<div class="result">
+			<h1 class="wol" id="wol"> </h1>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+<script>
+var resultado=0;
+var gameword="";
+var palabraj="";
+var gamewordaux="";
+var letraj="";
+var errores=1;
+var sentido= ["ME GUSTAN LAS ", "ODIO LAS ", "AMO LAS ", "QUIERO ", "NO QUIERO ", "NECESITO "];
+var frutas= ["MANZANAS " , "BANANAS ", "PERAS ", "NARANJAS ", "UVAS ", "FRUTAS ", "CIRUELAS ", "FRUTILLAS "];
+var colores= ["VERDES", "AZULES", "AMARILLAS", "ROSAS", "MORADAS", "NEGRAS", "BLANCAS", "PODRIDAS", "CON HONGUITOS"];
+//funcion para que habilite el boton de iniciar al ingresar una letra
+function EnableDisablesg() {
+	var startgame=document.getElementById("startgameb");
+		
+	if (palabra.value.trim() !="") {
+		startgame.disabled=false;
+	} else {
+		startgame.disabled=true;
+	}
+}
+//misma funcion para el boton de Buscar
+function EnableDisableb() {
+	var buscarletra=document.getElementById("buscar");
+
+	if (letra.value.trim() !="") {
+		buscar.disabled=false;
+	} else {
+		buscar.disabled=true;
+	}
+}
+//accion simple para que presione el boton de Iniciar al apretar enter en la casilla palabra
+var inputip = document.getElementById("palabra");
+
+inputip.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("startgameb").click();
+    }
+})
+//funcion de palabra random
+function randomword(){
+	let a= sentido[Math.floor(Math.random() * sentido.length)];
+	let b= frutas[Math.floor(Math.random() * frutas.length)];
+	let c= colores[Math.floor(Math.random() * colores.length)];
+	document.getElementById("palabra").value= a+b+c;
+	startgame();
+}
+//funcion de inicio de juego
+function startgame(){
+	palabraj = document.getElementById("palabra").value;
+	palabraj=palabraj.toUpperCase();
+	startgameb.disabled=true;
+	palabra.value="";
+	palabra.disabled=true;
+	letra.disabled=false;
+	resultado=0;
+	gameword="";
+	gamewordaux="";
+	letraj="";
+	errores=1;
+	document.getElementById("imagedisplay").src = "img/1.png";
+	document.getElementById("hidenword").style.color = "white";
+	document.getElementById("wol").innerHTML = "";
+	for(i=0; i<palabraj.length; i++) {
+		if (palabraj[i]===" "){
+			gameword+=" ";
+		} else {
+			gameword+="-";
+		}
+	}
+	document.getElementById("hidenword").innerHTML = gameword;
+	
+}
+//accion simple para que presione el boton de buscar al apretar enter en la casilla letra
+var inputbl = document.getElementById("letra");
+
+inputbl.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("buscar").click();
+    }
+})
+//Funcion para buscar letra en la/s palabra/s y todo el desarrollo del juego
+function buscarletra(){
+	if (errores<8){
+		gamewordaux=gameword;
+		letraj = document.getElementById("letra").value;
+		letraj=letraj.toUpperCase();
+		for (var i=0; i<palabraj.length; i++) {
+			if (palabraj[i]===letraj){
+				gameword=gameword.replaceAt(i,letraj);
+			}
+		}
+		if (gameword===palabraj){
+			resultado=1;
+		}
+		if (gameword===gamewordaux){
+			errores=errores+1;
+			document.getElementById("imagedisplay").src = "img/"+errores+".png";
+		}
+		if (errores>=8) {
+			resultado=2;
+		}
+		letra.value="";
+		document.getElementById("hidenword").innerHTML = gameword;
+		if (resultado===1){
+			document.getElementById("wol").innerHTML = "Ganaste :)";
+			document.getElementById("wol").style.color = "lightgreen";
+			document.getElementById("hidenword").style.color = "lightgreen";
+			buscar.disabled=true;
+			startgameb.disabled=true;
+			palabra.disabled=false;
+			letra.disabled=true;
+		} else if (resultado===2){
+			document.getElementById("wol").innerHTML = "Perdiste :(";
+			document.getElementById("hidenword").innerHTML = palabraj;
+			document.getElementById("wol").style.color = "lightcoral";
+			document.getElementById("hidenword").style.color = "lightcoral";
+			buscar.disabled=true;
+			startgameb.disabled=true;
+			palabra.disabled=false;
+			letra.disabled=true;
+		}
+	} else if (errores===8) {
+		resultado=2;
+	}
+	if (resultado===1){
+		document.getElementById("wol").innerHTML = "Ganaste :)";
+		document.getElementById("wol").style.color = "lightgreen";
+		document.getElementById("hidenword").style.color = "lightgreen";
+		buscar.disabled=true;
+		startgameb.disabled=true;
+		palabra.disabled=false;
+		letra.disabled=true;
+		
+	} else if (resultado===2){
+		document.getElementById("wol").innerHTML = "Perdiste :(";
+		document.getElementById("hidenword").innerHTML = palabraj;
+		document.getElementById("wol").style.color = "lightcoral";
+		document.getElementById("hidenword").style.color = "lightcoral";
+		buscar.disabled=true;
+		startgameb.disabled=true;
+		palabra.disabled=false;
+		letra.disabled=true;
+	}
+}
+//string prototype para reemplazar caracteres de un string
+String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+}
+</script>
+</html>
