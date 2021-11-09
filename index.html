@@ -224,7 +224,7 @@ var sentido= ["ME GUSTAN LAS ", "ODIO LAS ", "AMO LAS ", "QUIERO ", "NO QUIERO "
 var frutas= ["MANZANAS " , "BANANAS ", "PERAS ", "NARANJAS ", "UVAS ", "FRUTAS ", "CIRUELAS ", "FRUTILLAS "];
 var colores= ["VERDES", "AZULES", "AMARILLAS", "ROSAS", "MORADAS", "NEGRAS", "BLANCAS", "PODRIDAS", "CON HONGUITOS"];
 var torden= ["t1", "t2", "t3", "t4", "t5"];
-var tordennum= -1;
+var taux
 //
 function alpha(e) {
     var k;
@@ -347,13 +347,11 @@ function buscarletra(){
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
-			if (tordennum<=4) {
-				tordennum=tordennum+1;
-			} 
-			if (tordennum===5) {
-				tordennum=0;
-			}
-			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
+			document.gerElementById("t5").innerHTML = t4.value;
+			document.gerElementById("t4").innerHTML = t3.value;
+			document.gerElementById("t3").innerHTML = t2.value;
+			document.gerElementById("t2").innerHTML = t1.value;
+			document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		} else if (resultado===2){
 			document.getElementById("wol").innerHTML = "Perdiste :(";
 			document.getElementById("hidenword").innerHTML = palabraj;
@@ -363,13 +361,11 @@ function buscarletra(){
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
-			if (tordennum<=4) {
-				tordennum=tordennum+1;
-			} 
-			if (tordennum===5) {
-				tordennum=0;
-			}
-			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
+			document.gerElementById("t5").innerHTML = t4.value;
+			document.gerElementById("t4").innerHTML = t3.value;
+			document.gerElementById("t3").innerHTML = t2.value;
+			document.gerElementById("t2").innerHTML = t1.value;
+			document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		}
 	} else if (errores===8) {
 		resultado=2;
@@ -381,13 +377,11 @@ function buscarletra(){
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
-		if (tordennum<=4) {
-			tordennum=tordennum+1;
-		} 
-		if (tordennum===5) {
-				tordennum=0;
-		}
-		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
+		document.gerElementById("t5").innerHTML = t4.value;
+		document.gerElementById("t4").innerHTML = t3.value;
+		document.gerElementById("t3").innerHTML = t2.value;
+		document.gerElementById("t2").innerHTML = t1.value;
+		document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	} else if (resultado===2){
 		document.getElementById("wol").innerHTML = "Perdiste :(";
 		document.getElementById("hidenword").innerHTML = palabraj;
@@ -397,13 +391,11 @@ function buscarletra(){
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
-		if (tordennum<=4) {
-			tordennum=tordennum+1;
-		} 
-		if (tordennum===5) {
-				tordennum=0;
-		}
-		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
+		document.gerElementById("t5").innerHTML = t4.value;
+		document.gerElementById("t4").innerHTML = t3.value;
+		document.gerElementById("t3").innerHTML = t2.value;
+		document.gerElementById("t2").innerHTML = t1.value;
+		document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	}
 
 }
@@ -434,13 +426,11 @@ function adivinarpal() {
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
-			if (tordennum<=4) {
-			tordennum=tordennum+1;
-			} 
-			if (tordennum===5) {
-					tordennum=0;
-			}
-			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
+			document.gerElementById("t5").innerHTML = t4.value;
+			document.gerElementById("t4").innerHTML = t3.value;
+			document.gerElementById("t3").innerHTML = t2.value;
+			document.gerElementById("t2").innerHTML = t1.value;
+			document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		} else if (resultado===2){
 			document.getElementById("wol").innerHTML = "Perdiste :(";
 			document.getElementById("hidenword").innerHTML = palabraj;
@@ -450,13 +440,11 @@ function adivinarpal() {
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
-			if (tordennum<=4) {
-				tordennum=tordennum+1;
-			} 
-			if (tordennum===5) {
-					tordennum=0;
-			}
-			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
+			document.gerElementById("t5").innerHTML = t4.value;
+			document.gerElementById("t4").innerHTML = t3.value;
+			document.gerElementById("t3").innerHTML = t2.value;
+			document.gerElementById("t2").innerHTML = t1.value;
+			document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		}
 	} else if (errores===8) {
 		resultado=2;
@@ -468,13 +456,11 @@ function adivinarpal() {
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
-		if (tordennum<=4) {
-			tordennum=tordennum+1;
-		} 
-		if (tordennum===5) {
-				tordennum=0;
-		}
-		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
+		document.gerElementById("t5").innerHTML = t4.value;
+		document.gerElementById("t4").innerHTML = t3.value;
+		document.gerElementById("t3").innerHTML = t2.value;
+		document.gerElementById("t2").innerHTML = t1.value;
+		document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	} else if (resultado===2){
 		document.getElementById("wol").innerHTML = "Perdiste :(";
 		document.getElementById("hidenword").innerHTML = palabraj;
@@ -484,13 +470,11 @@ function adivinarpal() {
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
-		if (tordennum<=4) {
-			tordennum=tordennum+1;
-		} 
-		if (tordennum===5) {
-				tordennum=0;
-		}
-		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
+		document.gerElementById("t5").innerHTML = t4.value;
+		document.gerElementById("t4").innerHTML = t3.value;
+		document.gerElementById("t3").innerHTML = t2.value;
+		document.gerElementById("t2").innerHTML = t1.value;
+		document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	}
 
 }
