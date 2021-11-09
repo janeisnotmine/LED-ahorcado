@@ -76,10 +76,6 @@
 			border-radius: 7px;
 			border: 5px solid teal;
 		}
-		div.float-child {
-			margin: auto;
-			float: top;
-		}
 		div.reshead {
 			padding-top: 6px;
 			height: 40px;
@@ -125,21 +121,19 @@
 		}
 		th {
 			margin: auto;
-			width: auto;
+			width: 300px;
 			text-align: center;
-			font: 18px bolder;
+			font: 20px bolder;
 			color: white;
 		}
 		td.tresultadow {
 			margin: auto;
-			width: auto;
 			text-align: center;
 			font: 18px bold;
 			color: lightgreen;
 		}
 		td.tresultadol {
 			margin: auto;
-			width: auto;
 			text-align: center;
 			font: 18px bold;
 			color: lightcoral;
@@ -216,7 +210,6 @@ var adivpal="";
 var sentido= ["ME GUSTAN LAS ", "ODIO LAS ", "AMO LAS ", "QUIERO ", "NO QUIERO ", "NECESITO ", ""];
 var frutas= ["MANZANAS " , "BANANAS ", "PERAS ", "NARANJAS ", "UVAS ", "FRUTAS ", "CIRUELAS ", "FRUTILLAS "];
 var colores= ["VERDES", "AZULES", "AMARILLAS", "ROSAS", "MORADAS", "NEGRAS", "BLANCAS", "PODRIDAS", "CON HONGUITOS"];
-var torden= ["t1", "t2", "t3", "t4", "t5"];
 //
 function alpha(e) {
     var k;
@@ -299,6 +292,37 @@ function startgame(){
 	document.getElementById("hidenword").innerHTML = gameword;
 	
 }
+//Funcion de resultado
+function validresult(){
+	if (resultado===1){
+		document.getElementById("wol").innerHTML = "Ganaste :)";
+		document.getElementById("wol").style.color = "lightgreen";
+		document.getElementById("hidenword").style.color = "lightgreen";
+		startgameb.disabled=true;
+		palabra.disabled=false;
+		letra.disabled=true;
+		adpal.disabled=true;
+		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML ;
+		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML ;
+		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML ;
+		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML ;
+		document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
+	} else if (resultado===2){
+		document.getElementById("wol").innerHTML = "Perdiste :(";
+		document.getElementById("hidenword").innerHTML = palabraj;
+		document.getElementById("wol").style.color = "lightcoral";
+		document.getElementById("hidenword").style.color = "lightcoral";
+		startgameb.disabled=true;
+		palabra.disabled=false;
+		letra.disabled=true;
+		adpal.disabled=true;
+		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML ;
+		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML ;
+		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML ;
+		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML ;
+		document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
+	}
+}
 //accion simple para que presione el boton de buscar al apretar enter en la casilla letra
 var inputbl = document.getElementById("letra");
 
@@ -331,65 +355,10 @@ function buscarletra(){
 		}
 		letra.value="";
 		document.getElementById("hidenword").innerHTML = gameword;
-		if (resultado===1){
-			document.getElementById("wol").innerHTML = "Ganaste :)";
-			document.getElementById("wol").style.color = "lightgreen";
-			document.getElementById("hidenword").style.color = "lightgreen";
-			startgameb.disabled=true;
-			palabra.disabled=false;
-			letra.disabled=true;
-			adpal.disabled=true;
-			document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML ;
-			document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML ;
-			document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML ;
-			document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML ;
-			document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
-		} else if (resultado===2){
-			document.getElementById("wol").innerHTML = "Perdiste :(";
-			document.getElementById("hidenword").innerHTML = palabraj;
-			document.getElementById("wol").style.color = "lightcoral";
-			document.getElementById("hidenword").style.color = "lightcoral";
-			startgameb.disabled=true;
-			palabra.disabled=false;
-			letra.disabled=true;
-			adpal.disabled=true;
-			document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML ;
-			document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML ;
-			document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML ;
-			document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML ;
-			document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
-		}
 	} else if (errores===8) {
 		resultado=2;
-	} else if (resultado===1){
-		document.getElementById("wol").innerHTML = "Ganaste :)";
-		document.getElementById("wol").style.color = "lightgreen";
-		document.getElementById("hidenword").style.color = "lightgreen";
-		startgameb.disabled=true;
-		palabra.disabled=false;
-		letra.disabled=true;
-		adpal.disabled=true;
-		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML;
-		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML;
-		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML;
-		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML;
-		document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
-	} else if (resultado===2){
-		document.getElementById("wol").innerHTML = "Perdiste :(";
-		document.getElementById("hidenword").innerHTML = palabraj;
-		document.getElementById("wol").style.color = "lightcoral";
-		document.getElementById("hidenword").style.color = "lightcoral";
-		startgameb.disabled=true;
-		palabra.disabled=false;
-		letra.disabled=true;
-		adpal.disabled=true;
-		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML;
-		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML;
-		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML;
-		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML;
-		document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	}
-
+	validresult();
 }
 //funcion para adivinar palabra
 function adivinarpal() {
@@ -410,65 +379,10 @@ function adivinarpal() {
 		}
 		letra.value="";
 		document.getElementById("hidenword").innerHTML = gameword;
-		if (resultado===1){
-			document.getElementById("wol").innerHTML = "Ganaste :)";
-			document.getElementById("wol").style.color = "lightgreen";
-			document.getElementById("hidenword").style.color = "lightgreen";
-			startgameb.disabled=true;
-			palabra.disabled=false;
-			letra.disabled=true;
-			adpal.disabled=true;
-			document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML;
-			document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML;
-			document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML;
-			document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML;
-			document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
-		} else if (resultado===2){
-			document.getElementById("wol").innerHTML = "Perdiste :(";
-			document.getElementById("hidenword").innerHTML = palabraj;
-			document.getElementById("wol").style.color = "lightcoral";
-			document.getElementById("hidenword").style.color = "lightcoral";
-			startgameb.disabled=true;
-			palabra.disabled=false;
-			letra.disabled=true;
-			adpal.disabled=true;
-			document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML;
-			document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML;
-			document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML;
-			document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML;
-			document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
-		}
 	} else if (errores===8) {
 		resultado=2;
-	} else if (resultado===1){
-		document.getElementById("wol").innerHTML = "Ganaste :)";
-		document.getElementById("wol").style.color = "lightgreen";
-		document.getElementById("hidenword").style.color = "lightgreen";
-		startgameb.disabled=true;
-		palabra.disabled=false;
-		letra.disabled=true;
-		adpal.disabled=true;
-		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML;
-		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML;
-		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML;
-		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML;
-		document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
-	} else if (resultado===2){
-		document.getElementById("wol").innerHTML = "Perdiste :(";
-		document.getElementById("hidenword").innerHTML = palabraj;
-		document.getElementById("wol").style.color = "lightcoral";
-		document.getElementById("hidenword").style.color = "lightcoral";
-		startgameb.disabled=true;
-		palabra.disabled=false;
-		letra.disabled=true;
-		adpal.disabled=true;
-		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML;
-		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML;
-		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML;
-		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML;
-		document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	}
-
+	validresult();
 }
 
 //string prototype para reemplazar caracteres de un string
