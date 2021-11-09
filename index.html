@@ -10,6 +10,11 @@
 		<title>Ahorcado jiji</title>
 	</head>
 	<style type="text/css" media="screen">
+		div.float-container {
+			margin-left: 28%;
+			margin-right: 10px;
+			float: left;
+		}
 		div.container {
 			width: 500px;
 			margin-top: 5px;
@@ -19,15 +24,13 @@
 			border-top-left-radius: 7px;
 			border-top-right-radius: 7px;
 		}
-		div.inspal {
+		div.botones {
 			margin:auto;
 			text-align: center;
 			background-color: teal;
 			width: 500px; 
 			height: auto;
 			padding: 5px;
-			border-left: 5px solid teal;
-			border-right: 5px solid teal;
 		}
 		div.image {
 			margin:auto;
@@ -52,18 +55,6 @@
 			width: 500px; 
 			height: auto;
 			padding: 5px;
-			border-left: 7px solid teal;
-			border-right: 7px solid teal;
-		}
-		div.bletra {
-			margin:auto;
-			text-align: center;
-			background-color: teal;
-			width: 500px; 
-			height: auto;
-			padding: 5px;
-			border-left: 5px solid teal;
-			border-right: 5px solid teal;
 		}
 		div.result {
 			margin: auto;
@@ -74,6 +65,28 @@
 			padding: 5px;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
+		}
+		div.ultimapartida {
+			margin-top: 5px;
+			padding: 20px;
+			width: 300px;
+			height: 230px;
+			background-color: teal;
+			border-radius: 7px;
+			border: 5px solid teal;
+		}
+		div.float-child {
+			float: left;
+		}
+		div.reshead {
+			padding-top: 6px;
+			height: 40px;
+			margin-bottom: 5px;
+			text-align: center;
+			border-top-left-radius: 7px;
+			border-top-right-radius: 7px;
+			background-color: ghostwhite;
+
 		}
 		img {
 			border-radius: 3px solid black;
@@ -98,43 +111,105 @@
 			font-weight: bold;
 			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		}
+		h4 {
+			color: black;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			font-weight: bolder;
+		}
 		p {
 			font: 24px bold;
 			color: white;
 			font-style: oblique;
 		}
-		
+		th {
+			width: 73%;
+			text-align: center;
+			font: 18px bolder;
+			color: white;
+		}
+		td.tresultadow {
+			width: 75%;
+			text-align: center;
+			font: 18px bold;
+			color: lightgreen;
+		}
+		td.tresultadol {
+			width: 75%;
+			text-align: center;
+			font: 18px bold;
+			color: lightcoral;
+		}
+		td.terrores {
+			font: 18px bold;
+			color:ghostwhite;
+		}
 	</style>
 <body>
 	<div>
-		<div class="container">
-			<div class="header">
-				<h1 class="header">Juego del Ahorcado</h1>
+		<div class="float-container">
+			<div class="container">
+				<div class="header">
+					<h1 class="header">Juego del Ahorcado</h1>
+				</div>
+			</div>
+			<div class="botones">
+				<div class="input-group">
+					<input class="form-control" id="palabra" onkeypress="return alpha(event)" onkeyup="EnableDisablesg()" name="palabra" maxlength="20" pattern="[A-Za-z0-9]{1,20}" type="text" placeholder="Escribí la palabra o frase acá" required>
+					<button class="btn btn-primary" id="startgameb" onclick="startgame()" name="startgame" disabled="disabled">Iniciar</button>
+					<button class="btn btn-dark" id="palrandom" onclick="randomword()" name="palrandom">Random</button>
+				</div>
+			</div>
+			<div class="image">
+				<img alt="ahorcado" id="imagedisplay" src="img/1.png">
+			</div>
+			<div class="palesc" id="palesc">
+				<h2 class="hw" id="hidenword"> </h2>
+			</div>
+			<div class="botones">
+				<div class="input-group">
+					<input class="form-control" id="letra" name="letra" onkeypress="return alpha(event)" disabled="disabled" maxlength="1" type="text" placeholder="Escribí una letra">
+					<input class="form-control" id="adpal" name="adpal" onkeypress="return alpha(event)" disabled="disabled" type="text" pattern="[A-Za-z0-9]" placeholder="Adivina la Palabra o Frase">
+				</div>
+			</div>
+			<div class="result">
+				<h1 class="wol" id="wol"> </h1>
 			</div>
 		</div>
-		<div class="inspal">
-			<div class="input-group">
-				<input class="form-control" id="palabra" onkeypress="return alpha(event)" onkeyup="EnableDisablesg()" name="palabra" maxlength="20" pattern="[A-Za-z0-9]{1,20}" type="text" placeholder="Escribí la palabra o frase acá" required>
-				<button class="btn btn-primary" id="startgameb" onclick="startgame()" name="startgame" disabled="disabled">Iniciar</button>
-				<button class="btn btn-dark" id="palrandom" onclick="randomword()" name="palrandom">Random</button>
+		<div class="float-child">
+			<div class="ultimapartida">
+				<div class="resultado">
+					<div class="reshead">
+						<h4>Historial de partidas</h4>
+					</div>
+					<table id="tablaresultado">
+						<tr>
+							<th>Resultado</th>
+							<th>Errores</th>
+						</tr>
+						<tr id="t1">
+
+						</tr>
+						<tr id="t2">
+
+						</tr>
+						<tr id="t3">
+
+						</tr>
+						<tr id="t4">
+
+						</tr>
+						<tr id="t5">
+
+						</tr>
+					</table>
+				</div>
 			</div>
-		</div>
-		<div class="image">
-			<img alt="ahorcado" id="imagedisplay" src="img/1.png">
-		</div>
-		<div class="palesc" id="palesc">
-			<h2 class="hw" id="hidenword"> </h2>
-		</div>
-		<div class="bletra">
-			<div class="input-group">
-				<input class="form-control" id="letra" name="letra" onkeypress="return alpha(event)" disabled="disabled" maxlength="1" type="text" placeholder="Escribí una letra">
-				<input class="form-control" id="adpal" name="adpal" onkeypress="return alpha(event)" disabled="disabled" type="text" pattern="[A-Za-z0-9]" placeholder="Adivina la Palabra o Frase">
-			</div>
-		</div>
-		<div class="result">
-			<h1 class="wol" id="wol"> </h1>
 		</div>
 	</div>
+
+		
+
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script>
@@ -148,6 +223,8 @@ var adivpal="";
 var sentido= ["ME GUSTAN LAS ", "ODIO LAS ", "AMO LAS ", "QUIERO ", "NO QUIERO ", "NECESITO ", ""];
 var frutas= ["MANZANAS " , "BANANAS ", "PERAS ", "NARANJAS ", "UVAS ", "FRUTAS ", "CIRUELAS ", "FRUTILLAS "];
 var colores= ["VERDES", "AZULES", "AMARILLAS", "ROSAS", "MORADAS", "NEGRAS", "BLANCAS", "PODRIDAS", "CON HONGUITOS"];
+var torden= ["t1", "t2", "t3", "t4", "t5"];
+var tordennum= -1;
 //
 function alpha(e) {
     var k;
@@ -270,6 +347,13 @@ function buscarletra(){
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
+			if (tordennum<=4) {
+				tordennum=tordennum+1;
+			} 
+			if (tordennum===5) {
+				tordennum=0;
+			}
+			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		} else if (resultado===2){
 			document.getElementById("wol").innerHTML = "Perdiste :(";
 			document.getElementById("hidenword").innerHTML = palabraj;
@@ -279,11 +363,17 @@ function buscarletra(){
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
+			if (tordennum<=4) {
+				tordennum=tordennum+1;
+			} 
+			if (tordennum===5) {
+				tordennum=0;
+			}
+			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		}
 	} else if (errores===8) {
 		resultado=2;
-	}
-	if (resultado===1){
+	} else if (resultado===1){
 		document.getElementById("wol").innerHTML = "Ganaste :)";
 		document.getElementById("wol").style.color = "lightgreen";
 		document.getElementById("hidenword").style.color = "lightgreen";
@@ -291,6 +381,13 @@ function buscarletra(){
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
+		if (tordennum<=4) {
+			tordennum=tordennum+1;
+		} 
+		if (tordennum===5) {
+				tordennum=0;
+		}
+		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	} else if (resultado===2){
 		document.getElementById("wol").innerHTML = "Perdiste :(";
 		document.getElementById("hidenword").innerHTML = palabraj;
@@ -300,9 +397,17 @@ function buscarletra(){
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
+		if (tordennum<=4) {
+			tordennum=tordennum+1;
+		} 
+		if (tordennum===5) {
+				tordennum=0;
+		}
+		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	}
+
 }
-//
+//funcion para adivinar palabra
 function adivinarpal() {
 	if (errores<8) {
 		adivpal=document.getElementById("adpal").value;
@@ -311,9 +416,10 @@ function adivinarpal() {
 		if (adivpal==palabraj) {
 			gameword=palabraj;
 			resultado=1;
-		} else {
+		} else {			
+			window.alert("incorrecto.\nIntentalo nuevamente!");
 			errores=errores+1;
-			alert("Incorrecto.\nIntentalo nuevamente!");
+			document.getElementById("imagedisplay").src = "img/"+errores+".png";
 		}
 		if (errores>=8) {
 			resultado=2;
@@ -328,6 +434,13 @@ function adivinarpal() {
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
+			if (tordennum<=4) {
+			tordennum=tordennum+1;
+			} 
+			if (tordennum===5) {
+					tordennum=0;
+			}
+			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		} else if (resultado===2){
 			document.getElementById("wol").innerHTML = "Perdiste :(";
 			document.getElementById("hidenword").innerHTML = palabraj;
@@ -337,11 +450,17 @@ function adivinarpal() {
 			palabra.disabled=false;
 			letra.disabled=true;
 			adpal.disabled=true;
+			if (tordennum<=4) {
+				tordennum=tordennum+1;
+			} 
+			if (tordennum===5) {
+					tordennum=0;
+			}
+			document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 		}
 	} else if (errores===8) {
 		resultado=2;
-	}
-	if (resultado===1){
+	} else if (resultado===1){
 		document.getElementById("wol").innerHTML = "Ganaste :)";
 		document.getElementById("wol").style.color = "lightgreen";
 		document.getElementById("hidenword").style.color = "lightgreen";
@@ -349,6 +468,13 @@ function adivinarpal() {
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
+		if (tordennum<=4) {
+			tordennum=tordennum+1;
+		} 
+		if (tordennum===5) {
+				tordennum=0;
+		}
+		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	} else if (resultado===2){
 		document.getElementById("wol").innerHTML = "Perdiste :(";
 		document.getElementById("hidenword").innerHTML = palabraj;
@@ -358,6 +484,13 @@ function adivinarpal() {
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
+		if (tordennum<=4) {
+			tordennum=tordennum+1;
+		} 
+		if (tordennum===5) {
+				tordennum=0;
+		}
+		document.getElementById(torden[tordennum]).innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
 	}
 
 }
