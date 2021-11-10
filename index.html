@@ -18,11 +18,21 @@
 		div.container {
 			width: 500px;
 			margin-top: 5px;
+			text-align: center;
 			padding: 5px;
 			background-color:teal;
 			border: 0px solid teal;
 			border-top-left-radius: 7px;
 			border-top-right-radius: 7px;
+		}
+		div.header {
+			padding: auto;
+			width: auto;
+			height: 45px;
+			align-content: center;
+			border-top-left-radius: 7px;
+			border-top-right-radius: 7px;
+			background-color: white;
 		}
 		div.botones {
 			margin:auto;
@@ -67,25 +77,27 @@
 			border-bottom-right-radius: 5px;
 		}
 		div.ultimapartida {
-			margin:auto;
+			margin: auto;
 			margin-top: 5px;
 			text-align: center;
-			padding: 20px;
+			padding: 2px;
 			width: 500px;
-			height: 230px;
+			min-height: 100px;
+			height: auto;
 			background-color: teal;
 			border-radius: 7px;
 			border: 5px solid teal;
 		}
 		div.reshead {
-			padding-top: 6px;
-			height: 40px;
-			margin-bottom: 5px;
-			text-align: center;
+			padding: auto;
+			width: auto;
+			height: auto;
+			align-content: center;
 			border-top-left-radius: 7px;
 			border-top-right-radius: 7px;
 			background-color: ghostwhite;
-
+		}button.btn {
+			font-weight: bolder;
 		}
 		img {
 			border-radius: 3px solid black;
@@ -93,9 +105,9 @@
 			max-height: 360px;
 		}
 		h1.header {
-			color:white;
+			color:teal;
 			text-align: center;
-			font-size: 36px;
+			font: 36px bold;
 			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		}
 		h1.wol {
@@ -111,7 +123,7 @@
 			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		}
 		h4 {
-			color: black;
+			color: teal;
 			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 			font-weight: bolder;
 		}
@@ -149,13 +161,13 @@
 		<div class="float-container">
 			<div class="container">
 				<div class="header">
-					<h1 class="header">Juego del Ahorcado</h1>
+					<h1 class="header">Ahorcado</h1>
 				</div>
 			</div>
 			<div class="botones">
 				<div class="input-group">
 					<input class="form-control" id="palabra" onkeypress="return alpha(event)" onkeyup="EnableDisablesg()" name="palabra" maxlength="20" pattern="[A-Za-z0-9]{1,20}" type="text" placeholder="Escribí la palabra o frase acá" required>
-					<button class="btn btn-primary" id="startgameb" onclick="startgame()" name="startgame" disabled="disabled">Iniciar</button>
+					<button class="btn btn-danger" id="startgameb" onclick="startgame()" name="startgame" disabled="disabled">Iniciar</button>
 					<button class="btn btn-dark" id="palrandom" onclick="randomword()" name="palrandom">Random</button>
 				</div>
 			</div>
@@ -208,9 +220,10 @@ var gamewordaux="";
 var letraj="";
 var errores=1;
 var adivpal="";
-var sentido= ["ME GUSTAN LAS ", "ODIO LAS ", "AMO LAS ", "QUIERO ", "NO QUIERO ", "NECESITO ", ""];
-var frutas= ["MANZANAS " , "BANANAS ", "PERAS ", "NARANJAS ", "UVAS ", "FRUTAS ", "CIRUELAS ", "FRUTILLAS "];
-var colores= ["VERDES", "AZULES", "AMARILLAS", "ROSAS", "MORADAS", "NEGRAS", "BLANCAS", "PODRIDAS", "CON HONGUITOS"];
+var sentido= ["ME GUSTAN LAS ", "ODIO LAS ", "AMO LAS ", "QUIERO ", "NO QUIERO ", "NECESITO ", "", "DETESTO LAS "];
+var comidas= ["MANZANAS " , "NARANJAS ", "UVAS ", "FRUTAS ", "CIRUELAS ", "PIZZAS ", "EMPANADAS ", "PAPAS ", "TORTILLAS ", "HAMBURGUESAS "];
+var estado= ["VERDES", "AZULES", "AMARILLAS", "ROSAS", "MORADAS", "BLANCAS", "PODRIDAS", "CON HONGUITOS", "CRUDAS", "ASADAS", "FRITAS", ""];
+var playername="";
 
 alert("hola! Antes que nada estas son las instrucciones del juego:\n\nEl juego es bastante sencillo.\nTienes que descubrir la/s palabra/s escondida/s\nbuscando una letra a la vez.\nSi esa letra está en la/s palabra/s se reemplazará.\nSino se dibujará una parte del ahorcado.\nSi fallas 7 veces perderás la partida.\nDescubre la palabra o frase para ganar la partida.\nTambien puedes adivinar la palabra o frase y si es correcta ganaras!");
 //
@@ -263,8 +276,8 @@ inputip.addEventListener("keyup", (event) => {
 //funcion de palabra random
 function randomword(){
 	let a= sentido[Math.floor(Math.random() * sentido.length)];
-	let b= frutas[Math.floor(Math.random() * frutas.length)];
-	let c= colores[Math.floor(Math.random() * colores.length)];
+	let b= comidas[Math.floor(Math.random() * comidas.length)];
+	let c= estado[Math.floor(Math.random() * estado.length)];
 	document.getElementById("palabra").value= a+b+c;
 	startgame();
 }
@@ -292,8 +305,7 @@ function startgame(){
 			gameword+="-";
 		}
 	}
-	document.getElementById("hidenword").innerHTML = gameword;
-	
+	document.getElementById("hidenword").innerHTML = gameword;	
 }
 //Funcion de resultado
 function validresult(){
@@ -305,11 +317,14 @@ function validresult(){
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
+		playername= prompt("Ingresa tu nombre (maximo 7 caracteres.)",);
+		playername= playername.substring(0,7);
 		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML ;
 		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML ;
 		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML ;
 		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML ;
-		document.getElementById("t1").innerHTML = '<td class="tresultadow">Ganaste</td><td class="terrores">'+(errores-1)+'</td>' ;
+		document.getElementById("t1").innerHTML = '<td class="tresultadow">'+playername+'</td><td class="terrores">'+(errores-1)+'</td>' ;
+		playername="";
 	} else if (resultado===2){
 		document.getElementById("wol").innerHTML = "Perdiste :(";
 		document.getElementById("hidenword").innerHTML = palabraj;
@@ -319,11 +334,14 @@ function validresult(){
 		palabra.disabled=false;
 		letra.disabled=true;
 		adpal.disabled=true;
+		playername= prompt("Ingresa tu nombre (maximo 7 caracteres.)",);
+		playername= playername.substring(0,7);
 		document.getElementById("t5").innerHTML = document.getElementById("t4").innerHTML ;
 		document.getElementById("t4").innerHTML = document.getElementById("t3").innerHTML ;
 		document.getElementById("t3").innerHTML = document.getElementById("t2").innerHTML ;
 		document.getElementById("t2").innerHTML = document.getElementById("t1").innerHTML ;
-		document.getElementById("t1").innerHTML = '<td class="tresultadol">Perdiste</td><td class="terrores">'+(errores-1)+'</td>' ;
+		document.getElementById("t1").innerHTML = '<td class="tresultadol">'+playername+'</td><td class="terrores">'+(errores-1)+'</td>' ;
+		playername="";
 	}
 }
 //accion simple para que presione el boton de buscar al apretar enter en la casilla letra
