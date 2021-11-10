@@ -4,7 +4,7 @@
 La pagina puede ser visualizada [aca.](https://janeisnotmine.github.io/LED-ahorcado/)
 
 ## Caracteristicas planeadas.
-- [x] https://github.com/janeisnotmine/LED-ahorcado/issues/2
+- [x] Boton para generar palabra o frase random. #2
 - [x] Historial de partidas.
 - [x] Nombre del jugador en el historial de partidas.
 - [ ] Animacion de las imagenes.
